@@ -1,78 +1,117 @@
 
 ---
 
-# Laravel 12 - Tipe Data dan Operator  
+# **Laravel 12 - Struktur Kontrol (Percabangan)**
 
-Dokumen ini berisi ringkasan materi terkait tipe data dan operator dalam Laravel 12.  
+Dalam pemrograman Laravel (PHP), struktur kontrol percabangan digunakan untuk mengambil keputusan berdasarkan kondisi tertentu. Laravel 12 menggunakan sintaks PHP standar dalam menangani percabangan.
 
-## 📌 Daftar Materi  
+## **📌 Materi 9: If Statement**
 
-1. **Single Quote (`'`) dalam String**  
-   - Penggunaan tanda kutip tunggal dalam string di Laravel/PHP.  
-   - Contoh: `'Ini adalah string'`.  
+`if` digunakan untuk mengeksekusi blok kode jika kondisi yang diberikan bernilai **true**.
 
-2. **Double Quote (`"`) dalam String**  
-   - Penggunaan tanda kutip ganda dalam string di Laravel/PHP.  
-   - Bisa memproses variabel dalam string.  
-   - Contoh:  
-     ```php
-     $nama = "Laravel";
-     echo "Framework favorit saya adalah $nama"; // Laravel
-     ```
+### **🔹 Contoh If Statement**
 
-3. **Tipe Data Array**  
-   - Menyimpan beberapa nilai dalam satu variabel.  
-   - Contoh:  
-     ```php
-     $buah = ["Apel", "Jeruk", "Mangga"];
-     ```
+```php
+$nilai = 80;
 
-4. **Tipe Data Array (Lanjutan)**  
-   - Array asosiatif dan multidimensi.  
-   - Contoh:  
-     ```php
-     $user = ["nama" => "Ali", "umur" => 25];
-     ```
+if ($nilai >= 75) {
+    echo "Anda lulus!";
+}
+```
 
-5. **Operator Aritmatika**  
-   - Melakukan operasi matematika:  
-     - `+` (Penjumlahan)  
-     - `-` (Pengurangan)  
-     - `*` (Perkalian)  
-     - `/` (Pembagian)  
-     - `%` (Modulo)  
-   - Contoh:  
-     ```php
-     $hasil = 10 + 5; // 15
-     ```
+✅ Jika `$nilai` lebih dari atau sama dengan `75`, maka akan mencetak:  
+➡ **"Anda lulus!"**
 
-6. **Operator String**  
-   - Menggabungkan string dengan `.`  
-   - Contoh:  
-     ```php
-     $nama = "Laravel";
-     echo "Framework: " . $nama;
-     ```
+### **🔹 Contoh If Statement dengan Blade di Laravel**
 
-7. **Operator Perbandingan**  
-   - Digunakan untuk membandingkan dua nilai:  
-     - `==` (Sama dengan)  
-     - `!=` (Tidak sama dengan)  
-     - `>` (Lebih besar)  
-     - `<` (Lebih kecil)  
-   - Contoh:  
-     ```php
-     var_dump(10 > 5); // true
-     ```
+Di Laravel, kita bisa menggunakan **Blade Template Engine** untuk membuat percabangan dalam tampilan.
 
-8. **Operator Logika**  
-   - Menghubungkan ekspresi dengan operator logika:  
-     - `&&` (AND)  
-     - `||` (OR)  
-     - `!` (NOT)  
-   - Contoh:  
-     ```php
-     var_dump(true && false); // false
-     ```
+```blade
+@if($nilai >= 75)
+    <p>Anda lulus!</p>
+@endif
+```
 
-Semoga bermanfaat! 🚀
+## **📌 Materi 10: Else If Statement**
+
+Gunakan `else if` untuk mengevaluasi beberapa kondisi bertingkat.
+
+### **🔹 Contoh Else If Statement**
+
+```php
+$nilai = 65;
+
+if ($nilai >= 80) {
+    echo "Anda mendapatkan nilai A";
+} elseif ($nilai >= 70) {
+    echo "Anda mendapatkan nilai B";
+} elseif ($nilai >= 60) {
+    echo "Anda mendapatkan nilai C";
+} else {
+    echo "Anda tidak lulus";
+}
+```
+
+✅ Output jika `$nilai = 65`:  
+➡ **"Anda mendapatkan nilai C"**
+
+### **🔹 Contoh Else If Statement dengan Blade**
+
+```blade
+@if($nilai >= 80)
+    <p>Anda mendapatkan nilai A</p>
+@elseif($nilai >= 70)
+    <p>Anda mendapatkan nilai B</p>
+@elseif($nilai >= 60)
+    <p>Anda mendapatkan nilai C</p>
+@else
+    <p>Anda tidak lulus</p>
+@endif
+```
+
+## **📌 Materi 11: Switch Statement**
+
+`switch` digunakan untuk menggantikan banyak `if-elseif` agar lebih mudah dibaca.
+
+### **🔹 Contoh Switch Statement**
+
+```php
+$grade = "B";
+
+switch ($grade) {
+    case "A":
+        echo "Sangat baik";
+        break;
+    case "B":
+        echo "Baik";
+        break;
+    case "C":
+        echo "Cukup";
+        break;
+    default:
+        echo "Nilai tidak valid";
+}
+```
+
+✅ Output jika `$grade = "B"`:  
+➡ **"Baik"**
+
+### **🔹 Contoh Switch Statement dengan Blade**
+
+```blade
+@switch($grade)
+    @case('A')
+        <p>Sangat baik</p>
+        @break
+    @case('B')
+        <p>Baik</p>
+        @break
+    @case('C')
+        <p>Cukup</p>
+        @break
+    @default
+        <p>Nilai tidak valid</p>
+@endswitch
+```
+
+---

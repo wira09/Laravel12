@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Tipe data dan Operator Aritmatika
 // materi 1
 Route::get('/single-quote', function () {
     return view('single-quote');
@@ -33,7 +34,30 @@ Route::get('/operator-string', function () {
 Route::get('/operator-perbandingan', function () {
     return view('operator-perbandingan');
 });
-// materi 7
+// materi 8
 Route::get('/operator-logika', function () {
     return view('operator-logika');
+});
+
+// Selection Pada laravel 12
+// materi 9
+Route::get('/if-statement', function () {
+    return view('if-statement');
+});
+Route::get('/if-statement2', function () {
+    return view('if-statement2');
+});
+// materi 10
+Route::get('/else-if-statment', function () {
+    return view('else-if-statment');
+});
+// materi 11
+Route::get('/switch-statement', function () {
+    return view('switch-statement');
+});
+Route::get('/switch-statement2', function () {
+    return view('switch-statement2');
+});
+Route::get('/switch-statement3', function () {
+    return view('switch-statement3');
 });
