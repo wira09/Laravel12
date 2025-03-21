@@ -1,117 +1,119 @@
+Berikut rangkuman materi **Looping pada Laravel 12** dalam format yang sesuai dengan contoh yang kamu berikan:
 
 ---
 
-# **Laravel 12 - Struktur Kontrol (Percabangan)**
+# **Laravel 12 - Struktur Perulangan (Looping)**
 
-Dalam pemrograman Laravel (PHP), struktur kontrol percabangan digunakan untuk mengambil keputusan berdasarkan kondisi tertentu. Laravel 12 menggunakan sintaks PHP standar dalam menangani percabangan.
+Dalam Laravel 12, perulangan digunakan untuk mengeksekusi blok kode secara berulang berdasarkan kondisi tertentu. Laravel mendukung berbagai jenis perulangan seperti `for`, `while`, `do-while`, dan `foreach`, baik dalam kode PHP maupun di Blade Template.
 
-## **📌 Materi 9: If Statement**
+## **📌 Materi 12: Perulangan `for`**
 
-`if` digunakan untuk mengeksekusi blok kode jika kondisi yang diberikan bernilai **true**.
+`for` digunakan saat jumlah iterasi sudah diketahui.
 
-### **🔹 Contoh If Statement**
+### **🔹 Contoh Perulangan `for` dalam PHP**
 
 ```php
-$nilai = 80;
-
-if ($nilai >= 75) {
-    echo "Anda lulus!";
+for ($i = 1; $i <= 5; $i++) {
+    echo "Iterasi ke-$i <br>";
 }
 ```
 
-✅ Jika `$nilai` lebih dari atau sama dengan `75`, maka akan mencetak:  
-➡ **"Anda lulus!"**
+✅ Output:  
+➡ **Iterasi ke-1**  
+➡ **Iterasi ke-2**  
+➡ **Iterasi ke-3**  
+➡ **Iterasi ke-4**  
+➡ **Iterasi ke-5**
 
-### **🔹 Contoh If Statement dengan Blade di Laravel**
-
-Di Laravel, kita bisa menggunakan **Blade Template Engine** untuk membuat percabangan dalam tampilan.
+### **🔹 Contoh Perulangan `for` dalam Blade**
 
 ```blade
-@if($nilai >= 75)
-    <p>Anda lulus!</p>
-@endif
+@for ($i = 1; $i <= 5; $i++)
+    <p>Iterasi ke-{{ $i }}</p>
+@endfor
 ```
 
-## **📌 Materi 10: Else If Statement**
+## **📌 Materi 13: Perulangan `while`**
 
-Gunakan `else if` untuk mengevaluasi beberapa kondisi bertingkat.
+`while` digunakan saat perulangan harus terus berjalan selama kondisi bernilai `true`.
 
-### **🔹 Contoh Else If Statement**
+### **🔹 Contoh Perulangan `while` dalam PHP**
 
 ```php
-$nilai = 65;
-
-if ($nilai >= 80) {
-    echo "Anda mendapatkan nilai A";
-} elseif ($nilai >= 70) {
-    echo "Anda mendapatkan nilai B";
-} elseif ($nilai >= 60) {
-    echo "Anda mendapatkan nilai C";
-} else {
-    echo "Anda tidak lulus";
+$i = 1;
+while ($i <= 5) {
+    echo "Iterasi ke-$i <br>";
+    $i++;
 }
 ```
 
-✅ Output jika `$nilai = 65`:  
-➡ **"Anda mendapatkan nilai C"**
+✅ Output sama seperti `for`.
 
-### **🔹 Contoh Else If Statement dengan Blade**
+### **🔹 Contoh Perulangan `while` dalam Blade**
 
 ```blade
-@if($nilai >= 80)
-    <p>Anda mendapatkan nilai A</p>
-@elseif($nilai >= 70)
-    <p>Anda mendapatkan nilai B</p>
-@elseif($nilai >= 60)
-    <p>Anda mendapatkan nilai C</p>
-@else
-    <p>Anda tidak lulus</p>
-@endif
+@php $i = 1; @endphp
+@while ($i <= 5)
+    <p>Iterasi ke-{{ $i }}</p>
+    @php $i++; @endphp
+@endwhile
 ```
 
-## **📌 Materi 11: Switch Statement**
+## **📌 Materi 14: Perulangan `do-while`**
 
-`switch` digunakan untuk menggantikan banyak `if-elseif` agar lebih mudah dibaca.
+`do-while` mirip `while`, tetapi minimal dieksekusi sekali meskipun kondisi awalnya `false`.
 
-### **🔹 Contoh Switch Statement**
+### **🔹 Contoh Perulangan `do-while` dalam PHP**
 
 ```php
-$grade = "B";
+$i = 1;
+do {
+    echo "Iterasi ke-$i <br>";
+    $i++;
+} while ($i <= 5);
+```
 
-switch ($grade) {
-    case "A":
-        echo "Sangat baik";
-        break;
-    case "B":
-        echo "Baik";
-        break;
-    case "C":
-        echo "Cukup";
-        break;
-    default:
-        echo "Nilai tidak valid";
+✅ Output sama seperti `for` dan `while`.
+
+### **🔹 Contoh Perulangan `do-while` dalam Blade**
+
+```blade
+@php $i = 1; @endphp
+@do
+    <p>Iterasi ke-{{ $i }}</p>
+    @php $i++; @endphp
+@while ($i <= 5)
+```
+
+## **📌 Materi 15: Perulangan `foreach`**
+
+`foreach` digunakan untuk mengiterasi array atau koleksi data.
+
+### **🔹 Contoh Perulangan `foreach` dalam PHP**
+
+```php
+$buah = ['Apel', 'Jeruk', 'Mangga'];
+
+foreach ($buah as $item) {
+    echo "$item <br>";
 }
 ```
 
-✅ Output jika `$grade = "B"`:  
-➡ **"Baik"**
+✅ Output:  
+➡ **Apel**  
+➡ **Jeruk**  
+➡ **Mangga**
 
-### **🔹 Contoh Switch Statement dengan Blade**
+### **🔹 Contoh Perulangan `foreach` dalam Blade**
 
 ```blade
-@switch($grade)
-    @case('A')
-        <p>Sangat baik</p>
-        @break
-    @case('B')
-        <p>Baik</p>
-        @break
-    @case('C')
-        <p>Cukup</p>
-        @break
-    @default
-        <p>Nilai tidak valid</p>
-@endswitch
+@php
+    $buah = ['Apel', 'Jeruk', 'Mangga'];
+@endphp
+
+@foreach ($buah as $item)
+    <p>{{ $item }}</p>
+@endforeach
 ```
 
 ---
