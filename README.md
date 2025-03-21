@@ -1,4 +1,3 @@
-Berikut rangkuman materi **Looping pada Laravel 12** dalam format yang sesuai dengan contoh yang kamu berikan:
 
 ---
 
