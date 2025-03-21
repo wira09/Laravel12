@@ -61,3 +61,30 @@ Route::get('/switch-statement2', function () {
 Route::get('/switch-statement3', function () {
     return view('switch-statement3');
 });
+
+// Looping pada laravel 12
+// materi 12
+Route::get('/perulangan-dengan-for', function () {
+    return view('perulangan-dengan-for');
+});
+Route::get('/perulangan-dengan-for2', function () {
+    return view('perulangan-dengan-for2');
+});
+// materi 13
+Route::get('/perulangan-dengan-while', function () {
+    return view('perulangan-dengan-while');
+});
+Route::get('/perulangan-dengan-while2', function () {
+    return view('perulangan-dengan-while2');
+});
+// materi 14
+Route::get('/perulangan-dengan-do-while', function () {
+    return view('perulangan-dengan-do-while');
+});
+Route::get('/perulangan-dengan-do-while2', function () {
+    return view('perulangan-dengan-do-while2');
+});
+// materi 15
+Route::get('/perulangan-foreach', function () {
+    return view('perulangan-foreach');
+});
